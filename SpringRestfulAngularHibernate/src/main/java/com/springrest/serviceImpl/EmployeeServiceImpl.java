@@ -11,18 +11,24 @@ import com.springrest.service.EmployeeService;
 
 import java.util.List;
 
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 /**
  *
  * @author ashok
  */
 @Service
-public class EmployeeServiceImpl implements EmployeeService {
+@Transactional
+public class EmployeeServiceImpl implements EmployeeService {    
     
-    @Autowired
+//    @Autowired
+//    private EmployeeRepository employeeRepository;
     private EmployeeRepository employeeRepository;
+ 
+    public void setEmployeeRepository(EmployeeRepository employeeRepository) {
+        this.employeeRepository = employeeRepository;
+    }
     
     @Override
     public Employee getDummyEmployee() {
