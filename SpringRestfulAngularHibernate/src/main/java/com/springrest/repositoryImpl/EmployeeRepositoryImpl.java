@@ -52,14 +52,14 @@ public class EmployeeRepositoryImpl implements EmployeeRepository {
     @Override
     public Employee getDummyEmployee() {
         Employee emp = new Employee();
+        
         emp.setFirstName("John");
         emp.setLastName("Doe");
         emp.setEmail("john.doe@gmail.com");
         emp.setTelephone("632-231-6634");
         emp.setAddress("1000 N 4TH ST, Fairfield, Iowa");        
         emp.setCreatedDate(new Date());
-        this.create(emp);
-        return emp;
+        return this.create(emp);
     }
 
     @Override
@@ -101,7 +101,7 @@ public class EmployeeRepositoryImpl implements EmployeeRepository {
     public Employee create(Employee e) { 
         e.setCreatedDate(new Date());
         Session session = getSession();
-        session.persist(e);
+        session.persist(e);        
         logger.info("Employee saved successfully, Employee Details = " + e);
         
         return e;
